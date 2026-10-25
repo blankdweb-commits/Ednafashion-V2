@@ -39,15 +39,15 @@ export const Navbar: React.FC<NavbarProps> = ({
           </span>
         </div>
 
-        {/* Waiting Lounge Toggle */}
+        {/* Launch Standby Page Toggle */}
         {onOpenWaitingPage && (
           <button
             onClick={onOpenWaitingPage}
-            className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold text-[#DFD3BC] hover:text-[#F68B1E] transition-colors ml-4 uppercase tracking-wider"
-            title="Preview Launch Waiting Room"
+            className="inline-flex items-center gap-1.5 px-2.5 py-0.5 rounded-full bg-white/10 hover:bg-[#97E575] hover:text-[#143B14] text-[#DFD3BC] transition-all ml-4 text-[11px] font-bold uppercase tracking-wider shadow-xs cursor-pointer"
+            title="Return to Launch Standby Page (14 Days)"
           >
             <Clock className="w-3 h-3 text-[#F68B1E]" />
-            <span>Waiting Room</span>
+            <span>Launch Page (14 Days)</span>
           </button>
         )}
       </div>

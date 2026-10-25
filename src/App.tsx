@@ -16,11 +16,10 @@ import { PRODUCTS } from './data/mockData';
 import { useStore } from './store/useStore';
 
 export default function App() {
-  const [activeTab, setActiveTab] = useState<string>('home');
+  const { isWaitingMode, setWaitingMode } = useStore();
+  const [activeTab, setActiveTab] = useState<string>(isWaitingMode ? 'waiting' : 'home');
   const [selectedProduct, setSelectedProduct] = useState<Product | null>(PRODUCTS[0]);
   const [trackingReference, setTrackingReference] = useState<string>('EDNA-2026-8819');
-
-  const { isWaitingMode, setWaitingMode } = useStore();
 
   const handleSelectProduct = (product: Product) => {
     setSelectedProduct(product);

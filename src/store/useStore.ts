@@ -20,14 +20,15 @@ function getInitialWishlist(): string[] {
 
 function getInitialWaitingMode(): boolean {
   try {
-    const raw = localStorage.getItem(WAITING_MODE_STORAGE_KEY);
+    const raw = sessionStorage.getItem(WAITING_MODE_STORAGE_KEY);
     if (raw !== null) {
       return JSON.parse(raw);
     }
   } catch (e) {
     // ignore
   }
-  return false;
+  // The launch page is the first page users see
+  return true;
 }
 
 interface StoreState {
@@ -125,14 +126,14 @@ export const useStore = create<StoreState>((set, get) => ({
   isWaitingMode: getInitialWaitingMode(),
   setWaitingMode: (val: boolean) => {
     try {
-      localStorage.setItem(WAITING_MODE_STORAGE_KEY, JSON.stringify(val));
+      sessionStorage.setItem(WAITING_MODE_STORAGE_KEY, JSON.stringify(val));
     } catch (e) {}
     set({ isWaitingMode: val });
   },
   toggleWaitingMode: () => {
     const next = !get().isWaitingMode;
     try {
-      localStorage.setItem(WAITING_MODE_STORAGE_KEY, JSON.stringify(next));
+      sessionStorage.setItem(WAITING_MODE_STORAGE_KEY, JSON.stringify(next));
     } catch (e) {}
     set({ isWaitingMode: next });
   },
