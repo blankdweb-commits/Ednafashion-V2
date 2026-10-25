@@ -167,7 +167,7 @@ export const DELIVERY_ZONES: DeliveryZone[] = [
   {
     id: 'zone-edo',
     state: 'Edo State',
-    name: 'Edo State (Benin City, Ekpoma / Epoma, Auchi)',
+    name: 'Edo State (Benin City, Ekpoma, Auchi)',
     fee_kobo: 350000, // ₦3,500
     estimated_days: '1–2 business days',
   },

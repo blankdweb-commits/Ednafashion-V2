@@ -7,18 +7,15 @@ import {
   CheckCircle2,
   Lock,
   Mail,
-  Phone,
   Power,
   Pill,
-  Coffee,
   X,
-  ExternalLink,
   ChevronRight,
   ShieldCheck,
-  ShoppingBag,
+  Crown,
+  ZoomIn,
 } from 'lucide-react';
 import { PRODUCTS } from '../data/mockData';
-import { formatKobo } from '../lib/currency';
 
 interface WaitingPageProps {
   onEnterStore: () => void;
@@ -47,10 +44,11 @@ const MonsteraLeafSVG: React.FC<{ className?: string; opacity?: string; fill?: s
   </svg>
 );
 
+const FOUNDER_PHOTO_PATH = '/assets/aistudio/IMG-20261025-WA0007_23548730.jpg';
+
 export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
   // 14-day countdown state initialized to 14 days
   const [timeLeft, setTimeLeft] = useState(() => {
-    // Check if target launch date is stored, otherwise set to precisely 14 days from initial load
     const storedLaunch = localStorage.getItem('ednafashion_launch_timestamp');
     const fourteenDaysMs = 14 * 24 * 60 * 60 * 1000;
     let targetTime = storedLaunch ? parseInt(storedLaunch, 10) : 0;
@@ -70,10 +68,9 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
   });
 
   const [emailInput, setEmailInput] = useState('');
-  const [phoneInput, setPhoneInput] = useState('');
-  const [hubInput, setHubInput] = useState('Delta State (Warri / Asaba)');
   const [isSubscribed, setIsSubscribed] = useState(false);
   const [showChillModal, setShowChillModal] = useState(false);
+  const [showFounderModal, setShowFounderModal] = useState(false);
   const [chillPillsTaken, setChillPillsTaken] = useState(0);
 
   useEffect(() => {
@@ -106,7 +103,18 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
 
   return (
     <div className="min-h-screen bg-[#9C8BD9] relative overflow-hidden flex flex-col justify-center items-center p-3 sm:p-6 lg:p-10 font-sans selection:bg-[#97E575] selection:text-[#183918]">
-      {/* Background Decorative Monstera Leaves (Matching template visual design) */}
+      {/* Background Layer: Founder photo embedded across the entire launch background with luxury tone */}
+      <div
+        className="absolute inset-0 bg-cover pointer-events-none opacity-40 mix-blend-overlay filter blur-[1px] transform scale-105"
+        style={{
+          backgroundImage: `url('${FOUNDER_PHOTO_PATH}')`,
+          backgroundPosition: 'center 58%',
+        }}
+        aria-hidden="true"
+      />
+      <div className="absolute inset-0 bg-gradient-to-tr from-[#5E3F92]/80 via-[#7D64B5]/65 to-[#A390D8]/75 pointer-events-none" />
+
+      {/* Background Decorative Monstera Leaves */}
       <MonsteraLeafSVG className="absolute -top-12 -left-12 w-64 h-64 sm:w-80 sm:h-80 -rotate-45" />
       <MonsteraLeafSVG className="absolute top-1/4 -left-16 w-52 h-52 rotate-12 opacity-25" />
       <MonsteraLeafSVG className="absolute -bottom-16 -left-10 w-72 h-72 rotate-45 opacity-30" />
@@ -114,16 +122,22 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
       <MonsteraLeafSVG className="absolute top-1/3 -right-14 w-60 h-60 -rotate-12 opacity-25" />
       <MonsteraLeafSVG className="absolute -bottom-12 -right-10 w-80 h-80 -rotate-45" />
 
-      {/* Main Floating Rounded Card Container (Template Replica) */}
-      <div className="relative z-10 w-full max-w-6xl bg-white rounded-[28px] sm:rounded-[36px] shadow-[0_20px_50px_rgba(55,35,95,0.35)] overflow-hidden border border-white/60 flex flex-col my-auto transition-all">
+      {/* Main Floating Rounded Card Container */}
+      <div className="relative z-10 w-full max-w-6xl bg-white rounded-[28px] sm:rounded-[36px] shadow-[0_25px_60px_rgba(42,22,75,0.4)] overflow-hidden border border-white/70 flex flex-col my-auto transition-all">
         {/* Card Header Nav Bar */}
         <header className="px-6 sm:px-10 py-5 sm:py-6 border-b border-gray-100/80 flex items-center justify-between">
-          {/* Logo */}
-          <div className="flex items-center gap-2">
-            <span className="font-serif text-xl sm:text-2xl font-bold tracking-tight text-[#1F1E24]">
-              EDNAFASHION
+          {/* Logo with Founder indicator */}
+          <div className="flex items-center gap-3">
+            <div className="flex items-center gap-2">
+              <span className="font-serif text-xl sm:text-2xl font-black tracking-tight text-[#1F1E24]">
+                EDNAFASHION
+              </span>
+              <span className="inline-block w-2 h-2 rounded-full bg-[#97E575]" />
+            </div>
+            <span className="hidden sm:inline-flex items-center gap-1 text-[11px] font-semibold bg-[#FAF8FE] border border-[#DFD5F5] text-[#5A3E94] px-2.5 py-0.5 rounded-full">
+              <Crown className="w-3 h-3 text-[#F68B1E]" />
+              Founder-Owned
             </span>
-            <span className="inline-block w-2 h-2 rounded-full bg-[#97E575]" />
           </div>
 
           {/* Navigation Links */}
@@ -168,7 +182,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
             <button
               onClick={onEnterStore}
               title="Unlock Live Preview Store"
-              className="w-10 h-10 rounded-full border border-gray-200 hover:border-black hover:bg-black hover:text-white text-gray-700 flex items-center justify-center transition-all group shadow-sm"
+              className="w-10 h-10 rounded-full border border-gray-200 hover:border-black hover:bg-black hover:text-white text-gray-700 flex items-center justify-center transition-all group shadow-sm cursor-pointer"
               aria-label="Unlock live store"
             >
               <Power className="w-4 h-4 transition-transform group-hover:scale-110" />
@@ -176,11 +190,11 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
           </div>
         </header>
 
-        {/* Card Body - 2 Columns (Template Layout) */}
-        <div className="p-6 sm:p-10 lg:p-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+        {/* Card Body - 2 Columns */}
+        <div className="p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Headline, Copy, Chill Pill Button & 14-Day Countdown */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8 text-left">
-            {/* Title & Copy matching template */}
+            {/* Title & Copy */}
             <div className="space-y-3">
               <h1 className="text-5xl sm:text-6xl font-black tracking-tight text-[#1C1A24] leading-none">
                 Waiting
@@ -254,7 +268,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
               </div>
             </div>
 
-            {/* VIP Priority Reservation Form for Delta State & Lagos */}
+            {/* VIP Priority Reservation Form for Edo, Ekpoma, Warri, Benin */}
             <div id="vip-form" className="pt-2 space-y-3">
               {!isSubscribed ? (
                 <form onSubmit={handleSubscribe} className="space-y-3">
@@ -266,7 +280,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                         required
                         value={emailInput}
                         onChange={(e) => setEmailInput(e.target.value)}
-                        placeholder="Enter email for Edo, Epoma, Warri & Benin drop"
+                        placeholder="Enter email for Edo, Ekpoma, Warri & Benin drop"
                         className="w-full pl-10 pr-3 py-3 text-xs sm:text-sm bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:border-black focus:bg-white transition-colors"
                       />
                     </div>
@@ -281,7 +295,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                   <div className="flex items-center justify-between text-[11px] text-gray-500">
                     <span className="flex items-center gap-1">
                       <ShieldCheck className="w-3 h-3 text-green-600" />
-                      Priority express delivery across Edo, Epoma, Warri & Benin
+                      Priority express delivery across Edo, Ekpoma, Warri & Benin
                     </span>
                     <button
                       type="button"
@@ -298,7 +312,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                   <div className="space-y-1 text-xs">
                     <p className="font-bold">You are on the Priority Runway Register!</p>
                     <p className="text-green-800">
-                      We have reserved your invitation for priority delivery in Edo (Benin, Epoma/Ekpoma) & Delta (Warri). Use code <b className="font-mono bg-white px-1.5 py-0.5 rounded border border-green-300">EDNA14DAYS</b> for 15% off launch orders.
+                      We have reserved your invitation for priority delivery in Edo (Benin City, Ekpoma) & Delta (Warri). Use code <b className="font-mono bg-white px-1.5 py-0.5 rounded border border-green-300">EDNA14DAYS</b> for 15% off launch orders.
                     </p>
                   </div>
                 </div>
@@ -306,40 +320,79 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
             </div>
           </div>
 
-          {/* Right Column: Visual Waiting Lounge Graphic (Template Image Embed) */}
+          {/* Right Column: Founder & Creative Director Portrait Showcase (Prominent Display) */}
           <div className="lg:col-span-6 flex flex-col items-center justify-center">
-            <div className="relative w-full max-w-lg group">
-              {/* Image Frame highlighting the waiting lounge illustration */}
-              <div className="relative rounded-2xl overflow-hidden shadow-[0_12px_35px_rgba(40,25,75,0.18)] border border-gray-100 bg-[#E8E0F2] h-72 sm:h-80 w-full">
-                <img
-                  src="/assets/aistudio/image_a0f50376.png"
-                  alt="Waiting lounge with customers on bench, wall clock and potted plant"
-                  style={{ objectPosition: '86% 56%', transform: 'scale(1.45)' }}
-                  className="w-full h-full object-cover block select-none transition-transform duration-500"
-                  loading="eager"
-                />
+            <div className="relative w-full max-w-md group">
+              {/* Outer decorative glow */}
+              <div className="absolute -inset-1 bg-gradient-to-tr from-[#9C8BD9] via-[#F68B1E]/40 to-[#97E575]/40 rounded-3xl blur-md opacity-60 group-hover:opacity-100 transition duration-500" />
 
-                {/* Overlaid Badges */}
-                <div className="absolute top-3 left-3 bg-white/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[11px] font-bold text-[#1C1A24] shadow-xs flex items-center gap-1.5">
-                  <Sparkles className="w-3.5 h-3.5 text-[#F68B1E]" />
-                  <span>Harmattan Runway Capsule</span>
-                </div>
+              {/* Founder Image Showcase Container */}
+              <div
+                onClick={() => setShowFounderModal(true)}
+                className="relative rounded-2xl overflow-hidden shadow-[0_20px_45px_rgba(40,25,75,0.25)] border-2 border-white bg-[#1A1822] cursor-pointer"
+              >
+                {/* Image */}
+                <div className="relative h-[430px] sm:h-[480px] w-full overflow-hidden bg-stone-900">
+                  <img
+                    src={FOUNDER_PHOTO_PATH}
+                    alt="Edna, Founder and Creative Director of Edna's Fashion Flair holding brand lookbook"
+                    style={{ objectPosition: 'center 56%' }}
+                    className="w-full h-full object-cover block select-none transform transition-transform duration-700 group-hover:scale-105"
+                    loading="eager"
+                  />
 
-                <div className="absolute bottom-3 right-3 bg-[#1C1A24]/90 backdrop-blur-md px-3 py-1.5 rounded-full text-[11px] font-bold text-white shadow-xs flex items-center gap-1.5">
-                  <span className="w-2 h-2 rounded-full bg-[#97E575] animate-pulse" />
-                  <span>Launching in 14 Days</span>
+                  {/* Gradient overlays for typographic contrast */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-transparent to-black/30 pointer-events-none" />
+
+                  {/* Top Owner / Founder Verified Badge */}
+                  <div className="absolute top-3 left-3 bg-white/95 backdrop-blur-md px-3.5 py-1.5 rounded-full text-[11px] font-black text-[#1C1A24] shadow-md flex items-center gap-1.5 border border-amber-200">
+                    <Crown className="w-3.5 h-3.5 text-[#F68B1E] fill-[#F68B1E]" />
+                    <span>Founder & Creative Director</span>
+                    <span className="w-1.5 h-1.5 rounded-full bg-green-500 ml-0.5 animate-pulse" />
+                  </div>
+
+                  <div className="absolute top-3 right-3 bg-black/60 backdrop-blur-md text-white/90 p-2 rounded-full hover:bg-black/90 transition-colors shadow">
+                    <ZoomIn className="w-4 h-4" />
+                  </div>
+
+                  {/* Bottom Founder Identity Card */}
+                  <div className="absolute bottom-0 inset-x-0 p-4 sm:p-5 text-white space-y-1 bg-gradient-to-t from-black/90 via-black/60 to-transparent">
+                    <div className="flex items-center gap-2">
+                      <span className="text-[10px] font-black uppercase tracking-widest text-[#97E575] bg-[#143B14]/80 px-2.5 py-0.5 rounded-full border border-[#97E575]/50">
+                        Brand Owner
+                      </span>
+                      <span className="text-[11px] text-white/90 font-medium">
+                        Edo & Delta Fashion Atelier
+                      </span>
+                    </div>
+
+                    <h2 className="text-xl sm:text-2xl font-serif font-black tracking-tight text-white flex items-center gap-2">
+                      <span>EDNA</span>
+                      <span className="text-xs sm:text-sm font-sans font-bold text-gray-200">
+                        — Edna&apos;s Fashion Flair
+                      </span>
+                    </h2>
+
+                    <p className="text-xs font-semibold text-amber-200 italic tracking-wide">
+                      &ldquo;Where Luxury Meets Affordability&rdquo;
+                    </p>
+
+                    <p className="text-[11px] text-gray-200 line-clamp-1 pt-0.5">
+                      Curating luxury couture crafted for Benin City, Ekpoma, Warri & beyond.
+                    </p>
+                  </div>
                 </div>
               </div>
 
               {/* Direct Store Unlock VIP Banner */}
-              <div className="mt-5 bg-[#FAF8FE] border border-[#E9E3F8] rounded-2xl p-4 flex items-center justify-between gap-4">
+              <div className="mt-4 bg-[#FAF8FE] border border-[#E9E3F8] rounded-2xl p-4 flex items-center justify-between gap-4">
                 <div className="text-left space-y-0.5">
                   <p className="text-xs font-bold text-[#1C1A24] flex items-center gap-1.5">
                     <Lock className="w-3.5 h-3.5 text-[#F68B1E]" />
                     VIP Preview Pass Available
                   </p>
                   <p className="text-[11px] text-gray-500">
-                    Want to explore the catalog & test the 3D atelier right now?
+                    Want to explore the catalog & 3D atelier right now?
                   </p>
                 </div>
                 <button
@@ -352,7 +405,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
               </div>
 
               {/* Capsule Sneak Peek */}
-              <div className="mt-4 pt-4 border-t border-gray-100 flex items-center justify-between text-xs text-gray-600">
+              <div className="mt-3 pt-3 border-t border-gray-100 flex items-center justify-between text-xs text-gray-600">
                 <span className="text-[11px] uppercase font-bold text-gray-400 tracking-wider">
                   Sneak Peek Arrivals:
                 </span>
@@ -361,7 +414,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                     <button
                       key={p.id}
                       onClick={onEnterStore}
-                      className="group flex items-center gap-1.5 text-[11px] bg-white border border-gray-200 hover:border-black px-2 py-1 rounded-lg transition-colors"
+                      className="group flex items-center gap-1.5 text-[11px] bg-white border border-gray-200 hover:border-black px-2 py-1 rounded-lg transition-colors cursor-pointer"
                       title={p.name}
                     >
                       <img
@@ -381,13 +434,78 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
         </div>
       </div>
 
+      {/* Founder Full Portrait Modal */}
+      {showFounderModal && (
+        <div
+          className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4 animate-in fade-in duration-200"
+          onClick={() => setShowFounderModal(false)}
+        >
+          <div
+            className="bg-white rounded-3xl max-w-lg w-full overflow-hidden shadow-2xl border border-white/20 relative"
+            onClick={(e) => e.stopPropagation()}
+          >
+            <button
+              onClick={() => setShowFounderModal(false)}
+              className="absolute top-3 right-3 z-10 p-2 bg-black/60 hover:bg-black text-white rounded-full transition-colors cursor-pointer"
+              aria-label="Close photo preview"
+            >
+              <X className="w-5 h-5" />
+            </button>
+
+            <div className="relative max-h-[58vh] bg-stone-900 flex items-center justify-center p-2">
+              <img
+                src={FOUNDER_PHOTO_PATH}
+                alt="Edna, Founder of Edna's Fashion Flair"
+                className="max-h-[54vh] w-auto object-contain block mx-auto rounded-lg shadow"
+              />
+            </div>
+
+            <div className="p-5 sm:p-6 bg-white space-y-3 text-left">
+              <div className="flex items-center justify-between">
+                <div>
+                  <span className="text-[10px] uppercase font-black tracking-widest text-[#6E48AA]">
+                    Founder & Creative Director
+                  </span>
+                  <h3 className="text-xl font-serif font-black text-[#1C1A24]">
+                    Edna — Edna&apos;s Fashion Flair
+                  </h3>
+                </div>
+                <div className="flex items-center gap-1 bg-amber-50 text-amber-900 border border-amber-200 px-3 py-1 rounded-full text-xs font-bold">
+                  <Crown className="w-3.5 h-3.5 text-[#F68B1E]" />
+                  <span>Site Owner</span>
+                </div>
+              </div>
+
+              <p className="text-xs text-gray-600 leading-relaxed">
+                &ldquo;Fashion that empowers, style that inspires.&rdquo; Edna leads our atelier in designing authentic luxury fashion for Edo (Benin City, Ekpoma) and Delta State (Warri) with nationwide courier delivery.
+              </p>
+
+              <div className="pt-2 flex items-center justify-between">
+                <span className="text-[11px] text-gray-500">
+                  Launching officially in 14 days
+                </span>
+                <button
+                  onClick={() => {
+                    setShowFounderModal(false);
+                    onEnterStore();
+                  }}
+                  className="px-4 py-2 bg-[#1C1A24] hover:bg-black text-white text-xs font-bold uppercase tracking-wider rounded-xl transition-all cursor-pointer"
+                >
+                  Enter Store
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
       {/* Interactive "Chill Pill" Popover / Modal */}
       {showChillModal && (
         <div className="fixed inset-0 z-50 bg-black/50 backdrop-blur-xs flex items-center justify-center p-4">
           <div className="bg-white rounded-3xl max-w-md w-full p-6 sm:p-8 space-y-6 shadow-2xl border border-gray-100 text-center relative animate-in fade-in zoom-in-95 duration-200">
             <button
               onClick={() => setShowChillModal(false)}
-              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-black rounded-full hover:bg-gray-100 transition-colors"
+              className="absolute top-4 right-4 p-2 text-gray-400 hover:text-black rounded-full hover:bg-gray-100 transition-colors cursor-pointer"
               aria-label="Close modal"
             >
               <X className="w-5 h-5" />
@@ -406,7 +524,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                 Take a Deep Breath & Relax!
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Pour yourself an ice-cold glass of hibiscus Zobo or palm wine while our Edo (Benin City, Epoma/Ekpoma) & Delta (Warri) tailors press the pleats for our Harmattan runway!
+                Pour yourself an ice-cold glass of hibiscus Zobo or palm wine while our Edo (Benin City, Ekpoma) & Delta (Warri) tailors press the pleats for our Harmattan runway!
               </p>
             </div>
 
@@ -422,7 +540,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                 </span>
               </div>
               <p className="text-[11px] text-gray-500">
-                Redeemable across all collections with fast doorstep delivery to Edo, Epoma, Warri, Benin & nationwide.
+                Redeemable across all collections with fast doorstep delivery to Edo, Ekpoma, Warri, Benin & nationwide.
               </p>
             </div>
 

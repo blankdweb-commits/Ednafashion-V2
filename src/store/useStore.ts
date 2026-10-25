@@ -224,7 +224,7 @@ export const useStore = create<StoreState>((set, get) => ({
       customerName: 'Osasere Igbinedion',
       customerEmail: 'osasere@example.ng',
       customerPhone: '0802 345 6789',
-      shippingAddress: '14 Ring Road, Benin City, Edo State (Dispatched via Epoma & Warri regional express)',
+      shippingAddress: '14 Ring Road, Benin City, Edo State (Dispatched via Ekpoma & Warri regional express)',
       deliveryZone: DELIVERY_ZONES[0],
       items: [
         {

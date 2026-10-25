@@ -30,12 +30,12 @@ export const Navbar: React.FC<NavbarProps> = ({
 
   return (
     <header className="sticky top-0 z-40 bg-[#FDFBF7]/95 backdrop-blur-md border-b border-[#EFE8D8]">
-      {/* Top Notice Banner (Edo, Epoma, Warri, Benin & Nationwide Express Logistics) */}
+      {/* Top Notice Banner (Edo, Ekpoma, Warri, Benin & Nationwide Express Logistics) */}
       <div className="bg-[#231F18] text-[#FDFBF7] py-1.5 px-4 text-center text-xs tracking-wider flex items-center justify-between">
         <div className="flex-1 flex items-center justify-center gap-2">
           <ShieldCheck className="w-3.5 h-3.5 text-[#F68B1E]" />
           <span>
-            Authentic Nigerian Craftsmanship • Express Delivery Across <b>Edo (Benin City, Epoma)</b> & <b>Delta (Warri)</b>
+            Authentic Nigerian Craftsmanship • Express Delivery Across <b>Edo (Benin City, Ekpoma)</b> & <b>Delta (Warri)</b>
           </span>
         </div>
 
