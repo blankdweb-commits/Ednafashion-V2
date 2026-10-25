@@ -1,0 +1,6 @@
+{
+  "name": "Ednafashion — Nigerian Fashion E-Commerce & 3D Studio",
+  "description": "Production-ready Nigerian fashion storefront and 3D garment atelier inspired by Hingees editorial elegance and Jumia commercial functionality.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
