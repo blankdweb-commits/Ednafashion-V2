@@ -99,7 +99,7 @@ export const HomePage: React.FC<HomePageProps> = ({ onSelectProduct, onNavigate 
             <div>
               <h4 className="text-sm font-bold text-[#231F18]">Doorstep Delivery</h4>
               <p className="text-xs text-[#3D362A]/70">
-                1–2 days in Delta State (Warri / Asaba) & Lagos; 3–5 days nationwide.
+                1–2 days in Edo (Benin, Epoma) & Delta (Warri); 3–5 days nationwide.
               </p>
             </div>
           </div>

@@ -165,11 +165,18 @@ export const PRODUCTS: Product[] = [
 
 export const DELIVERY_ZONES: DeliveryZone[] = [
   {
+    id: 'zone-edo',
+    state: 'Edo State',
+    name: 'Edo State (Benin City, Ekpoma / Epoma, Auchi)',
+    fee_kobo: 350000, // ₦3,500
+    estimated_days: '1–2 business days',
+  },
+  {
     id: 'zone-delta',
     state: 'Delta State',
     name: 'Delta State (Warri, Asaba, Sapele, Ughelli)',
     fee_kobo: 380000, // ₦3,800
-    estimated_days: '2–3 business days',
+    estimated_days: '1–2 business days',
   },
   {
     id: 'zone-lagos-mainland',
@@ -195,7 +202,7 @@ export const DELIVERY_ZONES: DeliveryZone[] = [
   {
     id: 'zone-interstate',
     state: 'Other States',
-    name: 'Interstate (Port Harcourt, Ibadan, Benin, Kano, Enugu)',
+    name: 'Interstate (Port Harcourt, Ibadan, Kano, Enugu, Calabar)',
     fee_kobo: 550000, // ₦5,500
     estimated_days: '3–5 business days',
   },

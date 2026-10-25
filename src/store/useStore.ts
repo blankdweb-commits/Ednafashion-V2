@@ -221,11 +221,11 @@ export const useStore = create<StoreState>((set, get) => ({
   orders: [
     {
       reference: 'EDNA-2026-8819',
-      customerName: 'Chinelo Adebayo',
-      customerEmail: 'chinelo@example.ng',
+      customerName: 'Osasere Igbinedion',
+      customerEmail: 'osasere@example.ng',
       customerPhone: '0802 345 6789',
-      shippingAddress: '14 Admiralty Way, Lekki Phase 1, Lagos',
-      deliveryZone: DELIVERY_ZONES[1],
+      shippingAddress: '14 Ring Road, Benin City, Edo State (Dispatched via Epoma & Warri regional express)',
+      deliveryZone: DELIVERY_ZONES[0],
       items: [
         {
           variantId: 'v1-m',

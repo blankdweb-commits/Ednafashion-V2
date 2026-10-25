@@ -149,7 +149,9 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                 Live
               </span>
             </button>
-            <span className="text-gray-400">Delta & Lagos Hub</span>
+            <span className="text-gray-500 font-semibold text-[11px]">
+              Edo, Ekpoma, Warri, Benin
+            </span>
             <button
               onClick={() => {
                 const el = document.getElementById('vip-form');
@@ -264,7 +266,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                         required
                         value={emailInput}
                         onChange={(e) => setEmailInput(e.target.value)}
-                        placeholder="Enter email for Delta State VIP drop"
+                        placeholder="Enter email for Edo, Epoma, Warri & Benin drop"
                         className="w-full pl-10 pr-3 py-3 text-xs sm:text-sm bg-gray-50 border border-gray-200 rounded-xl text-gray-900 focus:outline-none focus:border-black focus:bg-white transition-colors"
                       />
                     </div>
@@ -279,7 +281,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                   <div className="flex items-center justify-between text-[11px] text-gray-500">
                     <span className="flex items-center gap-1">
                       <ShieldCheck className="w-3 h-3 text-green-600" />
-                      Priority delivery slots in Warri, Asaba & Lagos
+                      Priority express delivery across Edo, Epoma, Warri & Benin
                     </span>
                     <button
                       type="button"
@@ -296,7 +298,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                   <div className="space-y-1 text-xs">
                     <p className="font-bold">You are on the Priority Runway Register!</p>
                     <p className="text-green-800">
-                      We have reserved your invitation. Use code <b className="font-mono bg-white px-1.5 py-0.5 rounded border border-green-300">EDNA14DAYS</b> for 15% off launch orders.
+                      We have reserved your invitation for priority delivery in Edo (Benin, Epoma/Ekpoma) & Delta (Warri). Use code <b className="font-mono bg-white px-1.5 py-0.5 rounded border border-green-300">EDNA14DAYS</b> for 15% off launch orders.
                     </p>
                   </div>
                 </div>
@@ -404,7 +406,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                 Take a Deep Breath & Relax!
               </h3>
               <p className="text-sm text-gray-600 leading-relaxed">
-                Pour yourself an ice-cold glass of hibiscus Zobo or palm wine while our Delta State & Lagos tailors press the pleats for our Harmattan runway!
+                Pour yourself an ice-cold glass of hibiscus Zobo or palm wine while our Edo (Benin City, Epoma/Ekpoma) & Delta (Warri) tailors press the pleats for our Harmattan runway!
               </p>
             </div>
 
@@ -420,7 +422,7 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                 </span>
               </div>
               <p className="text-[11px] text-gray-500">
-                Redeemable across all collections and custom Delta State orders at launch.
+                Redeemable across all collections with fast doorstep delivery to Edo, Epoma, Warri, Benin & nationwide.
               </p>
             </div>
 

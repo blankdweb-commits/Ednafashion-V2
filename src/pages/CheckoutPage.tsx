@@ -24,15 +24,15 @@ export const CheckoutPage: React.FC<CheckoutPageProps> = ({ onBack, onOrderCompl
   const [paystackMethod, setPaystackMethod] = useState<'card' | 'bank' | 'ussd'>('card');
   const [isProcessing, setIsProcessing] = useState<boolean>(false);
 
-  // Form Fields (Delta State defaults)
+  // Form Fields (Edo / Delta regional defaults: Benin City, Epoma, Warri)
   const [formData, setFormData] = useState({
-    fullName: 'Elohor Oghenekevwe',
-    email: 'elohor@example.ng',
+    fullName: 'Osasere Igbinedion',
+    email: 'osasere@example.ng',
     phone: '0803 123 4567',
-    streetAddress: '24 Airport Road, Effurun',
-    city: 'Warri',
-    state: 'Delta State',
-    notes: 'Please call before dispatching to Warri address',
+    streetAddress: '14 Ring Road / Sapele Road',
+    city: 'Benin City',
+    state: 'Edo State',
+    notes: 'Direct courier delivery to Benin / Epoma hub',
   });
 
   // Calculate Subtotal & Discounts
