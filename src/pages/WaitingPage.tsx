@@ -178,29 +178,21 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
         <div className="p-6 sm:p-10 lg:p-14 grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
           {/* Left Column: Headline, Copy, Chill Pill Button & 14-Day Countdown */}
           <div className="lg:col-span-6 space-y-6 sm:space-y-8 text-left">
-            {/* Title & Copy from Template personalized for Ednafashion */}
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-3 py-1 bg-purple-50 border border-purple-200/60 rounded-full text-[11px] font-semibold text-[#6E48AA] uppercase tracking-wider">
-                <MapPin className="w-3.5 h-3.5 text-[#F68B1E]" />
-                <span>Delta State (Warri / Asaba) & Lagos Atelier</span>
-              </div>
-
+            {/* Title & Copy matching template */}
+            <div className="space-y-3">
               <h1 className="text-5xl sm:text-6xl font-black tracking-tight text-[#1C1A24] leading-none">
                 Waiting
               </h1>
 
-              <div className="space-y-2">
+              <div>
                 <p className="text-lg sm:text-xl font-bold text-[#2A2735] leading-snug">
                   We know it can be boring. But it won&apos;t take long. Pinky swear!
-                </p>
-                <p className="text-sm sm:text-base text-gray-600 leading-relaxed">
-                  Our master tailors in Warri, Asaba, and Lagos are putting the finishing touches on our Harmattan 2026 runway collection. Premium Abeokuta indigo linens, raw silk agbadas, and 3D virtual fittings are almost ready!
                 </p>
               </div>
             </div>
 
             {/* The Iconic Pill Button from Template */}
-            <div className="pt-2">
+            <div className="pt-1">
               <button
                 onClick={handleTakeChillPill}
                 className="group relative inline-flex items-center justify-center gap-3 px-8 py-4 sm:px-10 sm:py-4.5 bg-[#97E575] hover:bg-[#86DC61] active:scale-95 text-[#143B14] font-black text-sm sm:text-base tracking-widest uppercase rounded-full shadow-[0_8px_25px_rgba(151,229,117,0.55)] hover:shadow-[0_12px_30px_rgba(151,229,117,0.7)] transition-all transform hover:-translate-y-0.5 cursor-pointer"
@@ -209,9 +201,6 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
                 <span>TAKE A CHILL PILL</span>
                 <span className="w-2 h-2 rounded-full bg-[#143B14]/40 animate-ping ml-1" />
               </button>
-              <p className="text-[11px] text-gray-400 mt-2 font-medium">
-                Feeling impatient? Tap to receive a complimentary VIP concession.
-              </p>
             </div>
 
             {/* 14-Day Countdown Display */}
@@ -388,31 +377,6 @@ export const WaitingPage: React.FC<WaitingPageProps> = ({ onEnterStore }) => {
             </div>
           </div>
         </div>
-
-        {/* Card Footer Bar */}
-        <footer className="px-6 sm:px-10 py-4 bg-gray-50/70 border-t border-gray-100 flex flex-col sm:flex-row items-center justify-between text-xs text-gray-500 gap-2">
-          <div className="flex items-center gap-4 text-[11px]">
-            <span>© {new Date().getFullYear()} Ednafashion Nigeria Ltd.</span>
-            <span>•</span>
-            <span>Delta State (Warri / Asaba) Hub</span>
-            <span>•</span>
-            <span>Lagos Design Center</span>
-          </div>
-          <div className="flex items-center gap-4 text-[11px]">
-            <button onClick={onEnterStore} className="hover:text-black transition-colors">
-              Terms & Logistics
-            </button>
-            <button onClick={onEnterStore} className="hover:text-black transition-colors">
-              Paystack Certified
-            </button>
-            <button
-              onClick={onEnterStore}
-              className="text-[#1F1E24] font-bold hover:text-[#8B44FF] transition-colors"
-            >
-              Enter Live Store →
-            </button>
-          </div>
-        </footer>
       </div>
 
       {/* Interactive "Chill Pill" Popover / Modal */}
